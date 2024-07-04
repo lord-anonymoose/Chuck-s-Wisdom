@@ -34,7 +34,8 @@ class GroupedQuotesViewController: UIViewController {
     
     // MARK: - Private
     private func setupUI() {
-        view.backgroundColor = .yellow
+        view.backgroundColor = .systemBackground
+        
     }
     
     private func addSubviews() {

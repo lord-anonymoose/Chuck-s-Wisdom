@@ -14,6 +14,7 @@
 		8E1706A92C36DD35006D42BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E1706A82C36DD35006D42BC /* Base */; };
 		8E1706B12C36DFB8006D42BC /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1706B02C36DFB8006D42BC /* QuotesViewController.swift */; };
 		8E1706B32C36DFCD006D42BC /* GroupedQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1706B22C36DFCD006D42BC /* GroupedQuotesViewController.swift */; };
+		8E1706B82C36E5FE006D42BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1706B72C36E5FE006D42BC /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8E1706AA2C36DD35006D42BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1706B02C36DFB8006D42BC /* QuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
 		8E1706B22C36DFCD006D42BC /* GroupedQuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuotesViewController.swift; sourceTree = "<group>"; };
+		8E1706B72C36E5FE006D42BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				8E1706B42C36E0F8006D42BC /* Delegates */,
+				8E1706B62C36E5F0006D42BC /* Services */,
 				8E1706B52C36E10E006D42BC /* ViewControllers */,
+				8E1706B92C36E610006D42BC /* Views */,
 				8E1706A52C36DD35006D42BC /* Assets.xcassets */,
 				8E1706A72C36DD35006D42BC /* LaunchScreen.storyboard */,
 				8E1706AA2C36DD35006D42BC /* Info.plist */,
@@ -84,6 +88,21 @@
 				8E1706B22C36DFCD006D42BC /* GroupedQuotesViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8E1706B62C36E5F0006D42BC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8E1706B72C36E5FE006D42BC /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8E1706B92C36E610006D42BC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +179,7 @@
 				8E1706B12C36DFB8006D42BC /* QuotesViewController.swift in Sources */,
 				8E17069D2C36DD34006D42BC /* AppDelegate.swift in Sources */,
 				8E17069F2C36DD34006D42BC /* SceneDelegate.swift in Sources */,
+				8E1706B82C36E5FE006D42BC /* NetworkService.swift in Sources */,
 				8E1706B32C36DFCD006D42BC /* GroupedQuotesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

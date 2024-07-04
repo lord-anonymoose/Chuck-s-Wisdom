@@ -35,7 +35,7 @@ class QuotesViewController: UIViewController {
     
     // MARK: - Private
     private func setupUI() {
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBackground
     }
     
     private func addSubviews() {
