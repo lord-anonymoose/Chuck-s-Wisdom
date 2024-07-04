@@ -16,12 +16,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
                                
         let window = UIWindow(windowScene: scene)
-        
+        /*
         let navigationController = UINavigationController()
-        let viewController = ViewController()
+        let viewController = RandomQuoteViewController()
         
         navigationController.pushViewController(viewController, animated: true)
             
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        self.window = window*/
+        
+        let tabBarController = UITabBarController()
+        var controllers = [UIViewController]()
+        
+        let randomQuoteViewController = RandomQuoteViewController()
+        let randomQuoteImage = UIImage(systemName: "ellipsis.message")
+        randomQuoteViewController.tabBarItem = UITabBarItem(title: nil, image: randomQuoteImage, tag: 0)
+        controllers.append(randomQuoteViewController)
+        
+        let quotesViewController = QuotesViewController()
+        let quotesImage = UIImage(systemName: "book")
+        quotesViewController.tabBarItem = UITabBarItem(title: nil, image: quotesImage, tag: 1)
+        controllers.append(quotesViewController)
+        
+        let groupedQuotesViewController = GroupedQuotesViewController()
+        let groupedQuotesImage = UIImage(systemName: "list.bullet")
+        groupedQuotesViewController.tabBarItem = UITabBarItem(title: nil, image: groupedQuotesImage, tag: 2)
+        controllers.append(groupedQuotesViewController)
+        
+        tabBarController.viewControllers = controllers.map {
+            UINavigationController(rootViewController: $0)
+        }
+        tabBarController.selectedIndex = 0
+        
+        let navigationController = UINavigationController()
+        navigationController.pushViewController(tabBarController, animated: true)
+        
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
