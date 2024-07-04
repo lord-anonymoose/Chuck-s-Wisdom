@@ -41,4 +41,12 @@ class DatabaseService {
         return categories
     }
     
+    func deleteAllQuotes() {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
+    
 }

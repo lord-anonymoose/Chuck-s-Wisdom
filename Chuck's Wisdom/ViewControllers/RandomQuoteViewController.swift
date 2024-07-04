@@ -102,20 +102,9 @@ class RandomQuoteViewController: UIViewController {
         let result = List<String>()
 
         result.append(objectsIn: example)
-
-        // Print the List to verify
-        for element in result {
-            print(element)
-        }
-        /*
-        QuoteService.getRandomQuote { result in
-            if let quote = result {
-                quote.makeStored()
-            } else {
-                print("Failed")
-            }
-        }
-        */
+        
+        let databaseService = DatabaseService()
+        databaseService.deleteAllQuotes()
         /*
         QuoteService.getCategoryList { categories in
             if let categories = categories {
