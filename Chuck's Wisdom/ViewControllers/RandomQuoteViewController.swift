@@ -12,7 +12,11 @@ class RandomQuoteViewController: UIViewController {
     
     
     // MARK: - Subviews
-    
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "chuckImage1")
+        return imageView
+    }()
     
     
     // MARK: - Lifecycle

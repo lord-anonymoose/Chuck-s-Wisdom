@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "chuck-norris-playing-golf.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
