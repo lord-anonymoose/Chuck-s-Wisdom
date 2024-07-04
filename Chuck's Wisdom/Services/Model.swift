@@ -4,6 +4,8 @@
 //
 //  Created by Philipp Lazarev on 04.07.2024.
 //
+import Foundation
+import RealmSwift
 
 
 
@@ -24,6 +26,37 @@ struct Quote: Decodable {
         case url, value
     }
 }
+
+extension Quote {
+    func makeStored() -> StoredQuote{
+        let storedCategories = List<String>()
+        storedCategories.append(objectsIn: self.categories)
+        let quote = StoredQuote(value: self.value,
+                                categories: storedCategories)
+        return quote
+    }
+}
+
+class StoredQuote: Object {
+    @Persisted var value: String = ""
+    @Persisted var categories: List<String> = List()
+    @Persisted var date: Date = Date()
+    
+    override init() {
+        super.init()
+    }
+
+    init(value: String, categories: List<String>) {
+        self.value = value
+        self.categories = categories
+        self.date = Date()
+        super.init()
+    }
+}
+
+
+
+
 
 
 

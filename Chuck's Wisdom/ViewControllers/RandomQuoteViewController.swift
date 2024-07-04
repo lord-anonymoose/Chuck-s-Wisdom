@@ -9,7 +9,7 @@ import UIKit
 
 class RandomQuoteViewController: UIViewController {
     
-    
+    var currentQuote: Quote?
     
     // MARK: - Subviews
     private lazy var chuckImageView: UIImageView = {
@@ -52,6 +52,7 @@ class RandomQuoteViewController: UIViewController {
     
     private lazy var saveButton: UIButton = {
         let button = UIButton()
+        
         button.tintColor = .red
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .default)
         let image = UIImage(systemName: "arrow.down.app", withConfiguration: symbolConfig)
@@ -59,6 +60,9 @@ class RandomQuoteViewController: UIViewController {
         button.layer.cornerRadius = 10.0
         button.backgroundColor = .secondarySystemFill
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(saveQuoteButtonTapped), for: .touchUpInside)
+
         return button
     }()
     
@@ -77,6 +81,14 @@ class RandomQuoteViewController: UIViewController {
     // MARK: - Actions
     @objc func renewQuoteButtonTapped() {
         self.setCurrentQuote()
+    }
+    
+    @objc func saveQuoteButtonTapped() {
+        if let quote = self.currentQuote {
+            let databaseService = DatabaseService()
+            databaseService.saveQuote(quote)
+            print(databaseService.fetchQuotes())
+        }
     }
     
     
@@ -140,6 +152,7 @@ class RandomQuoteViewController: UIViewController {
         QuoteService.getRandomQuote { quote in
             if let quote = quote {
                 DispatchQueue.main.async {
+                    self.currentQuote = quote
                     self.quoteTextView.text = quote.value
                 }
             } else {
