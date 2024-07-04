@@ -26,6 +26,7 @@ class RandomQuoteViewController: UIViewController {
         
         textView.isEditable = false
         textView.isSelectable = false
+        textView.textAlignment = .center
         textView.backgroundColor = .secondarySystemBackground
         textView.font = UIFont.systemFont(ofSize: 20)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +83,17 @@ class RandomQuoteViewController: UIViewController {
     // MARK: - Private
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        
+        /*
+        QuoteService.getCategoryList { categories in
+            if let categories = categories {
+                let service = DatabaseService(categories: categories)
+                print(service.categories)
+            } else {
+                print("Failed to retrieve categories")
+            }
+        }
+        */
     }
     
     private func addSubviews() {
