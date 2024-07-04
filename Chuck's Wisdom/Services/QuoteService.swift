@@ -18,7 +18,6 @@ struct QuoteService {
                 let decoder = JSONDecoder()
                 do {
                     let quote = try decoder.decode(Quote.self, from: data as! Data)
-                    print(quote)
                     completion(quote)
                 } catch {
                     print("Error decoding data!")
@@ -39,7 +38,6 @@ struct QuoteService {
                 let decoder = JSONDecoder()
                 do {
                     let categories = try decoder.decode([String].self, from: data as! Data)
-                    print(categories)
                     completion(categories)
                 } catch {
                     print("Error decoding data!")

@@ -14,20 +14,28 @@ class RandomQuoteViewController: UIViewController {
     // MARK: - Subviews
     private lazy var chuckImageView: UIImageView = {
         let imageView = UIImageView()
+        
         imageView.image = UIImage(named: "chuckImage2")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
     
-    private lazy var quoteLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .secondarySystemBackground
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var quoteTextView: UITextView = {
+        let textView = UITextView()
+        
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.backgroundColor = .secondarySystemBackground
+        textView.font = UIFont.systemFont(ofSize: 20)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textView
     }()
     
     private lazy var renewButton: UIButton = {
         let button = UIButton()
+        
         button.tintColor = .red
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .default)
         let image = UIImage(systemName: "arrow.counterclockwise", withConfiguration: symbolConfig)
@@ -35,6 +43,9 @@ class RandomQuoteViewController: UIViewController {
         button.layer.cornerRadius = 10.0
         button.backgroundColor = .secondarySystemFill
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(renewQuoteButtonTapped), for: .touchUpInside)
+        
         return button
     }()
     
@@ -63,7 +74,9 @@ class RandomQuoteViewController: UIViewController {
     
     
     // MARK: - Actions
-    
+    @objc func renewQuoteButtonTapped() {
+        self.setCurrentQuote()
+    }
     
     
     // MARK: - Private
@@ -73,7 +86,8 @@ class RandomQuoteViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(chuckImageView)
-        view.addSubview(quoteLabel)
+        view.addSubview(quoteTextView)
+        setCurrentQuote()
         view.addSubview(renewButton)
         view.addSubview(saveButton)
     }
@@ -89,10 +103,10 @@ class RandomQuoteViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            quoteLabel.topAnchor.constraint(equalTo: chuckImageView.bottomAnchor, constant: 20),
-            quoteLabel.bottomAnchor.constraint(equalTo: renewButton.topAnchor, constant: -20),
-            quoteLabel.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
-            quoteLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
+            quoteTextView.topAnchor.constraint(equalTo: chuckImageView.bottomAnchor, constant: 20),
+            quoteTextView.bottomAnchor.constraint(equalTo: renewButton.topAnchor, constant: -20),
+            quoteTextView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
+            quoteTextView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
         ])
         
         NSLayoutConstraint.activate([
@@ -108,6 +122,18 @@ class RandomQuoteViewController: UIViewController {
             saveButton.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor, constant: 50),
             saveButton.widthAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    private func setCurrentQuote() {
+        QuoteService.getRandomQuote { quote in
+            if let quote = quote {
+                DispatchQueue.main.async {
+                    self.quoteTextView.text = quote.value
+                }
+            } else {
+                self.showAlert(message: "Failed to retrieve quote!")
+            }
+        }
     }
 }
 

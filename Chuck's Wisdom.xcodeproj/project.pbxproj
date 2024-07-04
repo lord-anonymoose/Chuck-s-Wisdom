@@ -18,6 +18,7 @@
 		8E59BDC82C371D4C00D669CA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDC72C371D4C00D669CA /* Model.swift */; };
 		8E59BDCA2C371FFC00D669CA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDC92C371FFC00D669CA /* Errors.swift */; };
 		8E59BDCC2C37227C00D669CA /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDCB2C37227C00D669CA /* QuoteService.swift */; };
+		8E59BDCE2C372D2000D669CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDCD2C372D2000D669CA /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		8E59BDC72C371D4C00D669CA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8E59BDC92C371FFC00D669CA /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8E59BDCB2C37227C00D669CA /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
+		8E59BDCD2C372D2000D669CA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				8E59BDCB2C37227C00D669CA /* QuoteService.swift */,
 				8E59BDC92C371FFC00D669CA /* Errors.swift */,
 				8E59BDC72C371D4C00D669CA /* Model.swift */,
+				8E59BDCD2C372D2000D669CA /* Extensions.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				8E1706A12C36DD34006D42BC /* RandomQuoteViewController.swift in Sources */,
 				8E1706B12C36DFB8006D42BC /* QuotesViewController.swift in Sources */,
 				8E17069D2C36DD34006D42BC /* AppDelegate.swift in Sources */,
+				8E59BDCE2C372D2000D669CA /* Extensions.swift in Sources */,
 				8E59BDCA2C371FFC00D669CA /* Errors.swift in Sources */,
 				8E17069F2C36DD34006D42BC /* SceneDelegate.swift in Sources */,
 				8E1706B82C36E5FE006D42BC /* NetworkService.swift in Sources */,
