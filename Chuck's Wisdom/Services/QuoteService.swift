@@ -17,7 +17,10 @@ struct QuoteService {
             case .success(let data):
                 let decoder = JSONDecoder()
                 do {
-                    let quote = try decoder.decode(Quote.self, from: data as! Data)
+                    var quote = try decoder.decode(Quote.self, from: data as! Data)
+                    if quote.categories.isEmpty {
+                        quote.categories = ["no category"]
+                    }
                     completion(quote)
                 } catch {
                     print("Error decoding data!")

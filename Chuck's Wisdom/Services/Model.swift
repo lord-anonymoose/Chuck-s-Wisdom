@@ -10,7 +10,7 @@ import RealmSwift
 
 
 struct Quote: Decodable {
-    let categories: [String]
+    var categories: [String]
     let createdAt: String
     let iconURL: String
     let id, updatedAt: String
@@ -29,8 +29,9 @@ struct Quote: Decodable {
 
 extension Quote {
     func makeStored() -> StoredQuote{
-        let storedCategories = List<String>()
+        var storedCategories = List<String>()
         storedCategories.append(objectsIn: self.categories)
+        print(storedCategories)
         let quote = StoredQuote(value: self.value,
                                 categories: storedCategories)
         return quote

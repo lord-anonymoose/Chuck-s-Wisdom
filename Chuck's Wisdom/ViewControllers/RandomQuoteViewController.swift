@@ -4,8 +4,10 @@
 //
 //  Created by Philipp Lazarev on 04.07.2024.
 //
-
+import Foundation
 import UIKit
+import RealmSwift
+
 
 class RandomQuoteViewController: UIViewController {
     
@@ -96,6 +98,24 @@ class RandomQuoteViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
+        let example = ["hello", "world"]
+        let result = List<String>()
+
+        result.append(objectsIn: example)
+
+        // Print the List to verify
+        for element in result {
+            print(element)
+        }
+        /*
+        QuoteService.getRandomQuote { result in
+            if let quote = result {
+                quote.makeStored()
+            } else {
+                print("Failed")
+            }
+        }
+        */
         /*
         QuoteService.getCategoryList { categories in
             if let categories = categories {

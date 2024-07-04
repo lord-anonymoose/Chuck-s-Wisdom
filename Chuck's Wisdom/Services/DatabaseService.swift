@@ -12,12 +12,7 @@ import RealmSwift
 
 class DatabaseService {
     
-    /*
-    var categories: [String] = []
-    
-    init(categories: [String]) {
-        self.categories = categories
-    }*/
+    var quotes = [StoredQuote]()
     
     func saveQuote(_ quote: Quote) {
         let storedQuote = quote.makeStored()
@@ -28,10 +23,22 @@ class DatabaseService {
         }
     }
     
-    func fetchQuotes() {
+    func fetchQuotes() -> [StoredQuote] {
         let realm = try! Realm()
         let quotes = realm.objects(StoredQuote.self)
-        print(quotes)
+        return quotes.map{ $0 }
+    }
+    
+    func fetchCategories() -> [String] {
+        var categories = [String]()
+
+        let quotes = fetchQuotes()
+        print(quotes.count)
+        for quote in quotes {
+            print(quote.categories.count)
+            categories.append(contentsOf: quote.categories.map { $0 })
+        }
+        return categories
     }
     
 }
