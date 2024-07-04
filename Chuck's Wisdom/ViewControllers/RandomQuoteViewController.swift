@@ -14,7 +14,8 @@ class RandomQuoteViewController: UIViewController {
     // MARK: - Subviews
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "chuckImage1")
+        imageView.image = UIImage(named: "chuckImage2")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -26,7 +27,6 @@ class RandomQuoteViewController: UIViewController {
         setupUI()
         addSubviews()
         setupConstraints()
-        // Do any additional setup after loading the view.
     }
     
     
@@ -41,11 +41,18 @@ class RandomQuoteViewController: UIViewController {
     }
     
     private func addSubviews() {
-        
+        view.addSubview(imageView)
     }
     
     private func setupConstraints() {
+        let safeAreaGuide = view.safeAreaLayoutGuide
         
+        NSLayoutConstraint.activate([
+            imageView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor, constant: -100),
+            imageView.heightAnchor.constraint(equalToConstant: 200),
+            imageView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 200)
+        ])
     }
 }
 
