@@ -45,9 +45,7 @@ class DatabaseService {
         var categories = [String]()
 
         let quotes = fetchQuotes()
-        print(quotes.count)
         for quote in quotes {
-            print(quote.categories.count)
             categories.append(contentsOf: quote.categories.map { $0 })
         }
         return categories

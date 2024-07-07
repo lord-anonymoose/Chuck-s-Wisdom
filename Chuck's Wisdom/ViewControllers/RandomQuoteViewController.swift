@@ -29,11 +29,12 @@ class RandomQuoteViewController: UIViewController {
         textView.isEditable = false
         textView.isSelectable = false
         textView.textAlignment = .center
-        textView.backgroundColor = .secondarySystemBackground
-        textView.font = UIFont.systemFont(ofSize: 20)
-        textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
         textView.sizeToFit()
+        textView.backgroundColor = .secondarySystemBackground
+        textView.layer.cornerRadius = 10.0
+        textView.font = UIFont.systemFont(ofSize: 20)
+        textView.translatesAutoresizingMaskIntoConstraints = false
         
         return textView
     }()
@@ -91,7 +92,6 @@ class RandomQuoteViewController: UIViewController {
         if let quote = self.currentQuote {
             let databaseService = DatabaseService()
             databaseService.saveQuote(quote)
-            print(databaseService.fetchQuotes())
         }
     }
     
@@ -99,13 +99,6 @@ class RandomQuoteViewController: UIViewController {
     // MARK: - Private
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        
-        let example = ["hello", "world"]
-        let result = List<String>()
-
-        result.append(objectsIn: example)
-        
-        let databaseService = DatabaseService()
         /*
         QuoteService.getCategoryList { categories in
             if let categories = categories {
@@ -138,7 +131,6 @@ class RandomQuoteViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             quoteTextView.topAnchor.constraint(equalTo: chuckImageView.bottomAnchor, constant: 20),
-            //quoteTextView.bottomAnchor.constraint(equalTo: renewButton.topAnchor, constant: -20),
             quoteTextView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
             quoteTextView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
         ])

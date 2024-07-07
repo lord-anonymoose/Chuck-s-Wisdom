@@ -31,7 +31,6 @@ extension Quote {
     func makeStored() -> StoredQuote{
         var storedCategories = List<String>()
         storedCategories.append(objectsIn: self.categories)
-        print(storedCategories)
         let quote = StoredQuote(value: self.value,
                                 categories: storedCategories)
         return quote
