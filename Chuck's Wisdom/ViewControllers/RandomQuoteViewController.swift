@@ -41,7 +41,6 @@ class RandomQuoteViewController: UIViewController {
     private lazy var renewButton: UIButton = {
         let button = UIButton()
         
-        button.tintColor = .red
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .default)
         let image = UIImage(systemName: "arrow.counterclockwise", withConfiguration: symbolConfig)
         button.setImage(image, for: .normal)
@@ -57,7 +56,6 @@ class RandomQuoteViewController: UIViewController {
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         
-        button.tintColor = .red
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .default)
         let image = UIImage(systemName: "arrow.down.app", withConfiguration: symbolConfig)
         button.setImage(image, for: .normal)
@@ -98,16 +96,6 @@ class RandomQuoteViewController: UIViewController {
     // MARK: - Private
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        /*
-        QuoteService.getCategoryList { categories in
-            if let categories = categories {
-                let service = DatabaseService(categories: categories)
-                print(service.categories)
-            } else {
-                print("Failed to retrieve categories")
-            }
-        }
-        */
     }
     
     private func addSubviews() {

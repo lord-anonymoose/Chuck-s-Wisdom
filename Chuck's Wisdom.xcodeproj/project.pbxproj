@@ -20,6 +20,7 @@
 		8E59BDCC2C37227C00D669CA /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDCB2C37227C00D669CA /* QuoteService.swift */; };
 		8E59BDCE2C372D2000D669CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDCD2C372D2000D669CA /* Extensions.swift */; };
 		8E59BDD02C37356300D669CA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDCF2C37356300D669CA /* DatabaseService.swift */; };
+		8E5CB17B2C3B519200041CB6 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5CB17A2C3B519200041CB6 /* SettingsService.swift */; };
 		8E7875572C3AB6890092CD73 /* QuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7875562C3AB6890092CD73 /* QuoteTableViewCell.swift */; };
 		8E81358A2C373D4700862960 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8E8135892C373D4700862960 /* RealmSwift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		8E59BDCB2C37227C00D669CA /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
 		8E59BDCD2C372D2000D669CA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8E59BDCF2C37356300D669CA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		8E5CB17A2C3B519200041CB6 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		8E7875562C3AB6890092CD73 /* QuoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				8E59BDC92C371FFC00D669CA /* Errors.swift */,
 				8E59BDC72C371D4C00D669CA /* Model.swift */,
 				8E59BDCD2C372D2000D669CA /* Extensions.swift */,
+				8E5CB17A2C3B519200041CB6 /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				8E59BDCE2C372D2000D669CA /* Extensions.swift in Sources */,
 				8E59BDCA2C371FFC00D669CA /* Errors.swift in Sources */,
 				8E17069F2C36DD34006D42BC /* SceneDelegate.swift in Sources */,
+				8E5CB17B2C3B519200041CB6 /* SettingsService.swift in Sources */,
 				8E7875572C3AB6890092CD73 /* QuoteTableViewCell.swift in Sources */,
 				8E1706B82C36E5FE006D42BC /* NetworkService.swift in Sources */,
 				8E1706B32C36DFCD006D42BC /* GroupedQuotesViewController.swift in Sources */,

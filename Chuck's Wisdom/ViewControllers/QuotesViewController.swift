@@ -14,6 +14,7 @@ class QuotesViewController: UIViewController {
     
     var quotes = [StoredQuote]()
     let databaseService = DatabaseService()
+    let settingsService = SettingsService()
     var categoryFilter: String?
     
     // MARK: - Subviews
@@ -58,17 +59,37 @@ class QuotesViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
+    @objc func changeSortButtonTapped() {
+        settingsService.toggleSort()
+        if settingsService.isAscendingSort() {
+            self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "arrow.down.right")
+        } else {
+            self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "arrow.up.right")
+        }
+        updateQuoteTableView()
+    }
     
     
     // MARK: - Private
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        
         if let filter = self.categoryFilter {
             self.navigationItem.title = filter
         } else {
             self.navigationItem.title = "Saved Quotes"
         }
+        
+        var changeSortImage: UIImage
+        
+        if settingsService.isAscendingSort() {
+            changeSortImage = UIImage(systemName: "arrow.down.right")!
+        } else {
+            changeSortImage = UIImage(systemName: "arrow.up.right")!
+        }
+        
+        let changeSortButton = UIBarButtonItem(title: "Sort", image: changeSortImage, target: self, action: #selector(changeSortButtonTapped))
+        navigationItem.rightBarButtonItem = changeSortButton
     }
     
     private func addSubviews() {
@@ -114,16 +135,18 @@ extension QuotesViewController: UITableViewDataSource, UITableViewDelegate {
     
     private func updateQuoteTableView() {
         if let filter = categoryFilter {
-            self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date < $1.date }).filter({ $0.categories.contains(filter) })
+            if settingsService.isAscendingSort() {
+                self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date < $1.date }).filter({ $0.categories.contains(filter) })
+            } else {
+                self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date > $1.date }).filter({ $0.categories.contains(filter) })
+            }
         } else {
-            self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date < $1.date })
-
+            if settingsService.isAscendingSort() {
+                self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date < $1.date })
+            } else {
+                self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date > $1.date })
+            }
         }
         quotesTableView.reloadData()
-    }
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        self.quotesTableView.reloadData()
-        refreshControl.endRefreshing()
     }
 }
