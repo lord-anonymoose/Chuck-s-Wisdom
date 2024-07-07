@@ -23,10 +23,22 @@ class DatabaseService {
         }
     }
     
-    func fetchQuotes() -> [StoredQuote] {
+    func deleteQuote(_ storedQuote: StoredQuote) {
         let realm = try! Realm()
-        let quotes = realm.objects(StoredQuote.self)
-        return quotes.map{ $0 }
+        try! realm.write {
+            realm.delete(storedQuote)
+        }
+    }
+    
+    func fetchQuotes() -> [StoredQuote] {
+        do {
+            let realm = try Realm()
+            let quotes = realm.objects(StoredQuote.self)
+            return Array(quotes)
+        } catch {
+            print("Failed to fetch quotes from Realm: \(error)")
+            return []
+        }
     }
     
     func fetchCategories() -> [String] {
@@ -48,5 +60,4 @@ class DatabaseService {
             realm.deleteAll()
         }
     }
-    
 }

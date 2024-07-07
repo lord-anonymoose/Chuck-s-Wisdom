@@ -32,6 +32,8 @@ class RandomQuoteViewController: UIViewController {
         textView.backgroundColor = .secondarySystemBackground
         textView.font = UIFont.systemFont(ofSize: 20)
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isScrollEnabled = false
+        textView.sizeToFit()
         
         return textView
     }()
@@ -104,7 +106,6 @@ class RandomQuoteViewController: UIViewController {
         result.append(objectsIn: example)
         
         let databaseService = DatabaseService()
-        databaseService.deleteAllQuotes()
         /*
         QuoteService.getCategoryList { categories in
             if let categories = categories {
@@ -137,7 +138,7 @@ class RandomQuoteViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             quoteTextView.topAnchor.constraint(equalTo: chuckImageView.bottomAnchor, constant: 20),
-            quoteTextView.bottomAnchor.constraint(equalTo: renewButton.topAnchor, constant: -20),
+            //quoteTextView.bottomAnchor.constraint(equalTo: renewButton.topAnchor, constant: -20),
             quoteTextView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
             quoteTextView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
         ])
