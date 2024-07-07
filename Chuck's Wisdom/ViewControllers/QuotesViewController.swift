@@ -14,10 +14,16 @@ class QuotesViewController: UIViewController {
     
     var quotes = [StoredQuote]()
     let databaseService = DatabaseService()
+    var categoryFilter: String?
     
     // MARK: - Subviews
     private lazy var quotesTableView: UITableView = {
         let tableView = UITableView()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(QuoteTableViewCell.self, forCellReuseIdentifier: "QuotesTableViewCell")
+        tableView.rowHeight = UITableView.automaticDimension
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -26,13 +32,25 @@ class QuotesViewController: UIViewController {
     
     
     // MARK: - Lifecycle
+    convenience init() {
+        self.init(categoryFilter: nil)
+    }
+    
+    init(categoryFilter: String?) {
+        self.categoryFilter = categoryFilter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateQuoteTableView()
         setupUI()
         addSubviews()
         setupConstraints()
-        setupDelegates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +64,11 @@ class QuotesViewController: UIViewController {
     // MARK: - Private
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        self.navigationItem.title = "My Title"
+        if let filter = self.categoryFilter {
+            self.navigationItem.title = filter
+        } else {
+            self.navigationItem.title = "Saved Quotes"
+        }
     }
     
     private func addSubviews() {
@@ -77,32 +99,26 @@ extension QuotesViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = QuoteTableViewCell()
         let quote = self.quotes[indexPath.row]
         cell.configure(quote: quote.value, date: quote.date)
+        cell.selectionStyle = .none
         return cell
     }
-    
-    /*
-
      
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        directoryService.remove(at: indexPath.row)
-        self.directoryTableView.reloadData()
-    }
-    */
-    
-    private func setupDelegates() {
-        quotesTableView.dataSource = self
-        quotesTableView.delegate = self
-        quotesTableView.register(QuoteTableViewCell.self, forCellReuseIdentifier: "QuotesTableViewCell")
-        quotesTableView.estimatedRowHeight = 100
-        quotesTableView.rowHeight = UITableView.automaticDimension
+        databaseService.deleteQuote(self.quotes[indexPath.row])
+        updateQuoteTableView()
     }
     
     private func updateQuoteTableView() {
-        self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date < $1.date })
+        if let filter = categoryFilter {
+            self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date < $1.date }).filter({ $0.categories.contains(filter) })
+        } else {
+            self.quotes = databaseService.fetchQuotes().sorted(by: { $0.date < $1.date })
+
+        }
         quotesTableView.reloadData()
     }
     

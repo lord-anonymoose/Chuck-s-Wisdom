@@ -29,8 +29,7 @@ class RandomQuoteViewController: UIViewController {
         textView.isEditable = false
         textView.isSelectable = false
         textView.textAlignment = .center
-        textView.isScrollEnabled = false
-        textView.sizeToFit()
+        textView.isScrollEnabled = true
         textView.backgroundColor = .secondarySystemBackground
         textView.layer.cornerRadius = 10.0
         textView.font = UIFont.systemFont(ofSize: 20)
@@ -47,7 +46,7 @@ class RandomQuoteViewController: UIViewController {
         let image = UIImage(systemName: "arrow.counterclockwise", withConfiguration: symbolConfig)
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 10.0
-        button.backgroundColor = .secondarySystemFill
+        button.backgroundColor = .secondarySystemBackground
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.addTarget(self, action: #selector(renewQuoteButtonTapped), for: .touchUpInside)
@@ -63,7 +62,7 @@ class RandomQuoteViewController: UIViewController {
         let image = UIImage(systemName: "arrow.down.app", withConfiguration: symbolConfig)
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 10.0
-        button.backgroundColor = .secondarySystemFill
+        button.backgroundColor = .secondarySystemBackground
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.addTarget(self, action: #selector(saveQuoteButtonTapped), for: .touchUpInside)
@@ -131,6 +130,7 @@ class RandomQuoteViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             quoteTextView.topAnchor.constraint(equalTo: chuckImageView.bottomAnchor, constant: 20),
+            quoteTextView.bottomAnchor.constraint(equalTo: renewButton.topAnchor, constant: -20),
             quoteTextView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
             quoteTextView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
         ])
