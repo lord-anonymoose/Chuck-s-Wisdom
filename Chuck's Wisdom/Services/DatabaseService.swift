@@ -13,11 +13,14 @@ import RealmSwift
 class DatabaseService {
     
     var quotes = [StoredQuote]()
+    let encryptionKey = EncryptionService.getOrGenerateEncryptionKey()
+    
+    var config = Realm.Configuration(encryptionKey: EncryptionService.getOrGenerateEncryptionKey())
     
     func saveQuote(_ quote: Quote) {
         let storedQuote = quote.makeStored()
         do {
-            let realm = try Realm()
+            let realm = try Realm(configuration: config)
             try realm.write {
                 realm.add(storedQuote)
             }
@@ -29,7 +32,7 @@ class DatabaseService {
     
     func deleteQuote(_ storedQuote: StoredQuote) {
         do {
-            let realm = try Realm()
+            let realm = try Realm(configuration: config)
             try realm.write {
                 realm.delete(storedQuote)
             }
@@ -41,7 +44,7 @@ class DatabaseService {
     
     func fetchQuotes() -> [StoredQuote] {
         do {
-            let realm = try Realm()
+            let realm = try Realm(configuration: config)
             let quotes = realm.objects(StoredQuote.self)
             return Array(quotes)
         } catch {
@@ -62,7 +65,7 @@ class DatabaseService {
     
     func deleteAllQuotes() {
         do {
-            let realm = try Realm()
+            let realm = try Realm(configuration: config)
             try realm.write {
                 realm.deleteAll()
             }
