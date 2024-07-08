@@ -17,6 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                
         let window = UIWindow(windowScene: scene)
         
+        guard !isJailbroken() else {
+            let navigationController = JailbreakViewController()
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+            self.window = window
+            return
+        }
+
         let tabBarController = UITabBarController()
         var controllers = [UIViewController]()
         
@@ -42,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         navigationController.pushViewController(tabBarController, animated: true)
-        
+         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
