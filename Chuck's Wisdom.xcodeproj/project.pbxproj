@@ -16,6 +16,9 @@
 		8E1706B32C36DFCD006D42BC /* GroupedQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1706B22C36DFCD006D42BC /* GroupedQuotesViewController.swift */; };
 		8E1706B82C36E5FE006D42BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1706B72C36E5FE006D42BC /* NetworkService.swift */; };
 		8E4838552C3C758800A0BE68 /* JailbreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4838542C3C758800A0BE68 /* JailbreakViewController.swift */; };
+		8E4838592C3C81FE00A0BE68 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4838562C3C81FE00A0BE68 /* KeychainItemAccessibility.swift */; };
+		8E48385A2C3C81FE00A0BE68 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4838572C3C81FE00A0BE68 /* KeychainWrapper.swift */; };
+		8E48385C2C3C828F00A0BE68 /* EncryptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E48385B2C3C828F00A0BE68 /* EncryptionService.swift */; };
 		8E59BDC82C371D4C00D669CA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDC72C371D4C00D669CA /* Model.swift */; };
 		8E59BDCA2C371FFC00D669CA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDC92C371FFC00D669CA /* Errors.swift */; };
 		8E59BDCC2C37227C00D669CA /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E59BDCB2C37227C00D669CA /* QuoteService.swift */; };
@@ -38,6 +41,9 @@
 		8E1706B22C36DFCD006D42BC /* GroupedQuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuotesViewController.swift; sourceTree = "<group>"; };
 		8E1706B72C36E5FE006D42BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8E4838542C3C758800A0BE68 /* JailbreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JailbreakViewController.swift; sourceTree = "<group>"; };
+		8E4838562C3C81FE00A0BE68 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		8E4838572C3C81FE00A0BE68 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		8E48385B2C3C828F00A0BE68 /* EncryptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionService.swift; sourceTree = "<group>"; };
 		8E59BDC72C371D4C00D669CA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8E59BDC92C371FFC00D669CA /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8E59BDCB2C37227C00D669CA /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 		8E17069B2C36DD34006D42BC /* Chuck's Wisdom */ = {
 			isa = PBXGroup;
 			children = (
+				8E4838582C3C81FE00A0BE68 /* KeychainTools */,
 				8E1706B42C36E0F8006D42BC /* Delegates */,
 				8E1706B62C36E5F0006D42BC /* Services */,
 				8E1706B52C36E10E006D42BC /* ViewControllers */,
@@ -115,10 +122,11 @@
 				8E1706B72C36E5FE006D42BC /* NetworkService.swift */,
 				8E59BDCB2C37227C00D669CA /* QuoteService.swift */,
 				8E59BDCF2C37356300D669CA /* DatabaseService.swift */,
+				8E48385B2C3C828F00A0BE68 /* EncryptionService.swift */,
+				8E5CB17A2C3B519200041CB6 /* SettingsService.swift */,
 				8E59BDC92C371FFC00D669CA /* Errors.swift */,
 				8E59BDC72C371D4C00D669CA /* Model.swift */,
 				8E59BDCD2C372D2000D669CA /* Extensions.swift */,
-				8E5CB17A2C3B519200041CB6 /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -129,6 +137,15 @@
 				8E7875562C3AB6890092CD73 /* QuoteTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8E4838582C3C81FE00A0BE68 /* KeychainTools */ = {
+			isa = PBXGroup;
+			children = (
+				8E4838562C3C81FE00A0BE68 /* KeychainItemAccessibility.swift */,
+				8E4838572C3C81FE00A0BE68 /* KeychainWrapper.swift */,
+			);
+			path = KeychainTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,12 +230,15 @@
 				8E1706B12C36DFB8006D42BC /* QuotesViewController.swift in Sources */,
 				8E17069D2C36DD34006D42BC /* AppDelegate.swift in Sources */,
 				8E59BDCE2C372D2000D669CA /* Extensions.swift in Sources */,
+				8E48385C2C3C828F00A0BE68 /* EncryptionService.swift in Sources */,
 				8E59BDCA2C371FFC00D669CA /* Errors.swift in Sources */,
 				8E17069F2C36DD34006D42BC /* SceneDelegate.swift in Sources */,
+				8E4838592C3C81FE00A0BE68 /* KeychainItemAccessibility.swift in Sources */,
 				8E4838552C3C758800A0BE68 /* JailbreakViewController.swift in Sources */,
 				8E5CB17B2C3B519200041CB6 /* SettingsService.swift in Sources */,
 				8E7875572C3AB6890092CD73 /* QuoteTableViewCell.swift in Sources */,
 				8E1706B82C36E5FE006D42BC /* NetworkService.swift in Sources */,
+				8E48385A2C3C81FE00A0BE68 /* KeychainWrapper.swift in Sources */,
 				8E1706B32C36DFCD006D42BC /* GroupedQuotesViewController.swift in Sources */,
 				8E59BDD02C37356300D669CA /* DatabaseService.swift in Sources */,
 			);
