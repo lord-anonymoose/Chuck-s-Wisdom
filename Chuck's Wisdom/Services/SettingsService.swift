@@ -26,7 +26,6 @@ class SettingsService {
     }
     
     func toggleSort() {
-        let defaults = UserDefaults.standard
         if isAscendingSort() {
             setDescendingSort()
         } else {

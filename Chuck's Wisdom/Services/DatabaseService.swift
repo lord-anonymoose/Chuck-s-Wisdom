@@ -16,17 +16,26 @@ class DatabaseService {
     
     func saveQuote(_ quote: Quote) {
         let storedQuote = quote.makeStored()
-        
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(storedQuote)
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(storedQuote)
+            }
+        } catch {
+            print("Failed to write a quote: \(error)")
+            return
         }
     }
     
     func deleteQuote(_ storedQuote: StoredQuote) {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(storedQuote)
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.delete(storedQuote)
+            }
+        } catch {
+            print("Failed to delete a quote: \(error)")
+            return
         }
     }
     
@@ -52,10 +61,14 @@ class DatabaseService {
     }
     
     func deleteAllQuotes() {
-        let realm = try! Realm()
-        
-        try! realm.write {
-            realm.deleteAll()
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch {
+            print("Failed to delete all quotes: \(error)")
+            return
         }
     }
 }
